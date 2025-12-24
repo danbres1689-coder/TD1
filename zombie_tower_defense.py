@@ -434,9 +434,12 @@ class Game:
         wave_text = "In Progress" if self.wave_in_progress else "Ready"
         status = self.tiny_font.render(f"Wave: {wave_text}", True, SOFT_WHITE)
         self.screen.blit(status, (20, PLAY_AREA.bottom + 40))
+<<<<<<< HEAD
         if not self.wave_in_progress:
             prompt = self.tiny_font.render("Press SPACE to start next wave", True, SOFT_WHITE)
             self.screen.blit(prompt, (20, PLAY_AREA.bottom + 60))
+=======
+>>>>>>> main
 
         for i, tower_type in enumerate(TOWER_TYPES):
             x = 420 + i * 160
@@ -447,9 +450,13 @@ class Game:
             self.screen.blit(name, (x + 8, PLAY_AREA.bottom + 14))
             self.screen.blit(cost, (x + 8, PLAY_AREA.bottom + 38))
             if self.coins < tower_type.cost:
+<<<<<<< HEAD
                 overlay = pygame.Surface(rect.size, pygame.SRCALPHA)
                 overlay.fill((0, 0, 0, 140))
                 self.screen.blit(overlay, rect.topleft)
+=======
+                pygame.draw.rect(self.screen, (0, 0, 0, 120), rect)
+>>>>>>> main
 
     def draw_game(self):
         self.screen.fill(DARK)
@@ -462,11 +469,15 @@ class Game:
             zombie.draw(self.screen)
         for projectile in self.projectiles:
             projectile.draw(self.screen)
+<<<<<<< HEAD
         self.draw_placement_preview()
+=======
+>>>>>>> main
         self.draw_ui()
         if self.pause:
             self.draw_overlay("Paused", "Press P to resume")
 
+<<<<<<< HEAD
     def draw_placement_preview(self):
         if self.selected_tower is None:
             return
@@ -487,6 +498,8 @@ class Game:
         self.screen.blit(preview, preview_rect.topleft)
         pygame.draw.circle(self.screen, color, snapped, tower_type.range, 1)
 
+=======
+>>>>>>> main
     def draw_overlay(self, title: str, subtitle: str):
         overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
         overlay.fill((0, 0, 0, 160))
@@ -541,9 +554,14 @@ class Game:
             )
             if self.can_place(snapped):
                 tower_type = TOWER_TYPES[self.selected_tower]
+<<<<<<< HEAD
                 if self.coins >= tower_type.cost:
                     self.towers.append(Tower(tower_type, snapped))
                     self.coins -= tower_type.cost
+=======
+                self.towers.append(Tower(tower_type, snapped))
+                self.coins -= tower_type.cost
+>>>>>>> main
             return
 
         for idx, tower in enumerate(self.towers):
